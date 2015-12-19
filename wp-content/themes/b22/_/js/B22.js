@@ -31,10 +31,10 @@ $fifth.on({
     }
 });
 
+
 /*!
  * Scroll page when filtering projects
  */
-
 
 $(function() {
     $("#first").on("hover", function() {
@@ -42,3 +42,4 @@ $(function() {
         return false;
     });
 });
+

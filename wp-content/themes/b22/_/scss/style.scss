@@ -87,6 +87,7 @@ body {
   line-height: 1.4;
   color: $b22-black;
   background-color: $b22-white;
+  height: 100%;
 }
 a {
   color: $b22-black;
@@ -220,6 +221,21 @@ footer {
   .cover_nav a {
     display:block
   }
+}
+
+.header {
+  height: 82%;
+  width: 100%;
+}
+
+.single-cover {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
 }
 
 #first #second #third #fourth #fifth #sixth{

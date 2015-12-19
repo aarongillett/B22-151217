@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header( 'single' ); ?>
 
 <?php if (have_posts()) : ?>
 
@@ -13,9 +13,17 @@ if (has_post_thumbnail( $post->ID ) ){
 }
 ?>
 
+
+<!-- Set featured image as background -->
+
+
 <div class="header">
-	<img src="<?php echo $feat_img_src; ?>" class="responsive" />
+	<?php if (has_post_thumbnail( $post->ID ) ): ?>
+	<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
+	<div class="single-cover" style="background-image: url('<?php echo $image[0]; ?>')"></div>
+	<?php endif; ?>
 </div>
+
 
 <div id="page_wrap" class="container single_page">
 

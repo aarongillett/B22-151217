@@ -113,8 +113,7 @@ if( $image ) {
 
 <script src="<?php bloginfo('template_directory') ?>/_/js/imagesloaded.pkgd.min.js"></script>
 <script src="<?php bloginfo('template_directory') ?>/_/js/isotope.pkgd.min.js"></script>
-
-<script src="<?php bloginfo('template_directory') ?>/_/js/cover.js"></script>
+<script src="<?php bloginfo('template_directory') ?>/_/js/B22.js"></script>
 
 <!-- this is where we put our custom functions -->
 <script src="<?php bloginfo('template_directory') ?>/_/js/functions.js"></script>
