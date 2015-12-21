@@ -943,6 +943,7 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  height: 100%;
 }
 body {
   font-family: 'Roboto', sans-serif;
@@ -1097,6 +1098,9 @@ img.responsive {
 .single_page .single-title {
   margin: 50px 0px;
 }
+.menu-single {
+  padding: 8px 0px;
+}
 footer {
   background: #fafafa;
   margin: 20% 0 50px 0;
@@ -1136,9 +1140,8 @@ footer nav ul li a {
   display: block;
 }
 @media (max-width: 767px) {
-  .mobile-only {
-    display: block !important;
-  }
+  .mobile-only { display: block !important; }
+  #tax_cloud { display: none; }
 }
 @media (min-width: 768px) {
   #home-posts {

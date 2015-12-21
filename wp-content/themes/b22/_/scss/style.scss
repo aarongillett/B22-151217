@@ -80,6 +80,7 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  height: 100%;
 }
 body {
   font-family: 'Roboto', sans-serif;
@@ -224,8 +225,9 @@ footer {
 }
 
 .header {
-  height: 82%;
+  height: 80%;
   width: 100%;
+  display: block;
 }
 
 .single-cover {
@@ -236,6 +238,7 @@ footer {
     background-position: center center;
     height: 100%;
     width: 100%;
+    min-height: 500px;
 }
 
 #first #second #third #fourth #fifth #sixth{
@@ -246,6 +249,10 @@ footer {
   font-size: 38px;
   line-height: 1.25;
   max-width: 800px;
+}
+
+.menu-single {
+  padding: 8px 0px;
 }
 
 @media (max-width: 991px) {
