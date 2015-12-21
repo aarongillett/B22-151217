@@ -948,7 +948,6 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   line-height: 1.4;
-  color: #4a4a4a;
   background-color: #fafafa;
   height: 100%;
 }
@@ -957,10 +956,7 @@ a {
   text-decoration: none;
 }
 a:hover, a:focus {
-  color: #3aaf72;
   text-decoration: none;
-  padding-bottom: 2px;
-  border-bottom: 1px solid;
 }
 a:focus {
   outline: thin dotted;
@@ -1053,7 +1049,6 @@ img.responsive {
 }
 .language {
   float: right;
-  background-color: red;
 }
 #tax_cloud {
   margin: 10% 0 20% 0;

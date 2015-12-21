@@ -38,10 +38,11 @@
 	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/_/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/_/css/bootstrap-theme.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/_/css/style.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/_/scss/style.scss">
 
 	<script src="<?php bloginfo('template_directory') ?>/_/js/modernizr-1.7.min.js"></script>
-<!--	<script src="<?php bloginfo('template_directory') ?>/_/js/single.js"></script>
--->
+	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/pathto/single.js"></script>
+
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 
 	<?php if(is_single()): ?>
@@ -55,21 +56,20 @@
 	<?php wp_head(); ?>
 
 
-
 </head>
 
 <body <?php body_class(); ?> id="<?php if(is_home()){ echo ('page_home'); } else { echo ('page_internal'); } ?>">
 
-	<div class="page-header">
+	<div class="page-header-single">
 
 		<div class="container">
 
 			<div class="container-fluid">
 
-				<div class="menu">
+				<div class="menu-single">
 
 					<ul>
-						<li><a href="http://www.b22.it/web/home/">All Projects</a></li>
+						<li><a href="http://www.b22.it/web/home/">&#x2190;</a></li>
 					</ul>
 
 				</div>

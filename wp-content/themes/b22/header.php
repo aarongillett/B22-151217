@@ -38,6 +38,7 @@
 	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/_/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/_/css/bootstrap-theme.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/_/css/style.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/_/scss/style.scss">
 
 	<script src="<?php bloginfo('template_directory') ?>/_/js/modernizr-1.7.min.js"></script>
 	<!-- <script src="<?php bloginfo('template_directory') ?>/_/js/cover.js"></script> -->
@@ -53,6 +54,7 @@
 
 	<!-- wp_head() -->
 	<?php wp_head(); ?>
+
 
 </head>
 
