@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,700|Roboto+Mono:300,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,700|Roboto+Mono:100,300,700);
 @font-face {
   font-family: 'Elusive-Icons';
   src: url('../fonts/Elusive-Icons.eot?v=2');
@@ -955,9 +955,17 @@ body {
 a {
   color: #4a4a4a;
   text-decoration: none;
+  cursor: pointer;
 }
-a:hover, a:focus {
+a:hover {
+  color: #3AAF72;
   text-decoration: none;
+}
+a:focus {
+  color: #3AAF72;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid;
 }
 a:focus {
   outline: thin dotted;
@@ -1122,13 +1130,13 @@ footer nav ul li a {
   height: auto;
   width: 100%;
 }
-#cover body {
-  background: url("http://www.thatsreallypossible.com/wp-content/uploads/2012/12/Space-Colonialisation.jpg") no-repeat center center fixed;
+body {
+  background-image: url() no-repeat center center fixed;
+  background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: #4a4a4a;
 }
 #cover .cover_nav {
   position: fixed;
@@ -1139,6 +1147,42 @@ footer nav ul li a {
 #cover .cover_nav a {
   display: block;
 }
+
+/* Cover Page specific styling */
+
+body.page-id-94 {
+  background: #2b2b2b;
+  color: #fafafa !important;
+}
+
+a.page-id-94 {
+ color: #fafafa !important;
+}
+
+a.menu .page-id-94 {
+ color: #fafafa !important;
+}
+
+.intro a {color:#fafafa;}
+
+.page-id-94 #navbar li a {color: #fafafa; cursor: pointer;}
+.page-id-94 #navbar li a:hover {color: #ccc;}
+
+/* Language Selector styling */
+
+#lang_sel_list ul a.lang_sel_other, #lang_sel li ul a:link, #lang_sel_list ul a.lang_sel_other:visited {background-color: transparent !important;}
+
+#lang_sel_list a.lang_sel_sel, #lang_sel_list a.lang_sel_sel:visited {background-color: transparent !important;}
+
+#lang_sel_list ul {border-top: none !important;}
+
+/* Background Covers */
+
+
+
+
+/* Media Queries */
+
 @media (max-width: 767px) {
   .mobile-only { display: block !important; }
   #tax_cloud { display: none; }
@@ -1149,6 +1193,8 @@ footer nav ul li a {
     margin: 0 15%;
   }
 }
+
+
 @-ms-viewport {
   width: device-width;
 }

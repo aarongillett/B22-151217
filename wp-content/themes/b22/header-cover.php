@@ -41,7 +41,7 @@
 	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/_/scss/style.scss">
 
 	<script src="<?php bloginfo('template_directory') ?>/_/js/modernizr-1.7.min.js"></script>
-	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/pathto/single.js"></script>
+	<script src="<?php bloginfo('template_directory') ?>/_/js/b22.js"></script>
 
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 
@@ -60,32 +60,9 @@
 
 <body <?php body_class(); ?> id="<?php if(is_home()){ echo ('page_home'); } else { echo ('page_internal'); } ?>">
 
-<!--
-	<div class="page-header-single">
+	<div class="page-header">
 
-		<div class="container">
-
-			<div class="container-fluid">
-
-				<div class="menu-single">
-
-					<ul>
-						<li><a href="http://www.b22.it/web/home/">&#x2190;</a></li>
-					</ul>
-
-				</div>
-
-			</div>
-
-		</div>
-
-	</div>
--->
-
-	<!-- Header -->
-<div class="container">
-<div class="page-header-single">
-	<div class="container">
+	    <div class="container">
 	    <div class="col-xs-6">
 	    	<div id="b22_logo">
 		  		<a href="http://www.b22.it/web">
@@ -94,60 +71,70 @@
 			</div>
 		</div>
 
+<!-- B22 Title H1
+			  	<a href="<?php bloginfo('url'); ?>" title="" accesskey="1">
+			  		<span class="logo"><?php bloginfo('name') ?></span>
+			  	</a>
+
+		  	</h1>
+-->
+
 	    <div class="col-xs-6">
 		    <nav class="navbar navbar-inverse"> <!-- <nav class="navbar navbar-inverse navbar-fixed-top"> -->
 
-		    <div class="container-fluid">
+		      <div class="container-fluid">
 
 		        <div class="navbar-header">
 
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-			            <span class="sr-only">Toggle navigation</span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-		        	</button>
+		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
 
 		        </div>
 
 		        <div id="navbar" class="collapse navbar-collapse">
-					<div class="page-id-94">
-						<!-- wp menu -->
+				<div class="page-id-94">
+					<!-- wp menu -->
 
-						<?php
+					<?php
 
-						$top_menu = array(
-							'theme_location'  => '',
-							'menu'            => '',
-							'container'       => '',
-							'container_class' => '',
-							'container_id'    => '',
-							'menu_class'      => 'menu',
-							'menu_id'         => '',
-							'echo'            => true,
-							'fallback_cb'     => 'wp_page_menu',
-							'before'          => '',
-							'after'           => '',
-							'link_before'     => '',
-							'link_after'      => '',
-							'items_wrap'      => '<ul id="%1$s" class="nav navbar-nav %2$s">%3$s</ul>',
-							'depth'           => 0,
-							'walker'          => ''
-						);
+					$top_menu = array(
+						'theme_location'  => '',
+						'menu'            => '',
+						'container'       => '',
+						'container_class' => '',
+						'container_id'    => '',
+						'menu_class'      => 'menu',
+						'menu_id'         => '',
+						'echo'            => true,
+						'fallback_cb'     => 'wp_page_menu',
+						'before'          => '',
+						'after'           => '',
+						'link_before'     => '',
+						'link_after'      => '',
+						'items_wrap'      => '<ul id="%1$s" class="nav navbar-nav %2$s">%3$s</ul>',
+						'depth'           => 0,
+						'walker'          => ''
+					);
 
-						wp_nav_menu( $top_menu );
+					wp_nav_menu( $top_menu );
 
-						?>
-					</div>
+					?>
+				</div>
 					<!-- / wp menu -->
 				</div>
-		    </div>
+		        </div>
 
 		        <!-- /.nav-collapse -->
 
+		      </div>
 		    </nav>
+		</div>
 		</div>
 
 	</div>
-</div>
-</div>
+
+

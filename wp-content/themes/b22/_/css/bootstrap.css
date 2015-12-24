@@ -972,7 +972,7 @@ h6,
 .h6 {
   font-family: inherit;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.25;
   color: inherit;
 }
 h1 small,
@@ -1185,21 +1185,15 @@ a.bg-danger:hover {
   background-color: #e4b9b9;
 }
 .page-header {
-  padding-bottom: 9px;
-  margin: 40px 0 20px;
+  padding: 40px 0 30px;
 }
-
 .page-header-single {
-  padding-bottom: 9px;
-  margin: 40px 0 20px 40px;
   position: absolute;
-  height: 40px;
+  padding: 40px 0 30px;
 }
-
-.page-header-single {
-  font-size: 60px;
+a.page-header-single {
+  color: #fff !important;
 }
-
 ul,
 ol {
   margin-top: 0;

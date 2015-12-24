@@ -4,7 +4,7 @@ Template Name: cover page template
 */
 ?>
 
-<?php get_header(); ?>
+<?php get_header( 'cover' ); ?>
 
 <?php if (have_posts()) : ?>
 
@@ -15,21 +15,26 @@ Template Name: cover page template
 
 <div class="cover_nav">
 	<div id="page_wrap" class="container home">
-		<div class="intro">
-			<?php the_content(); ?>
+		<div class="row">
+			<div class="col-md-10">
+				<div class="intro">
+					<?php the_content(); ?>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="language">
+					<?php do_action('wpml_add_language_selector'); ?>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
 <!-- language switcher -->
 
-<div class="container">
-	<div class="language">
-		<?php do_action('wpml_add_language_selector'); ?>
-	</div>
-</div>
 
 
+<?php /* ?>
 <div class="cover_nav">
 
 <!-- get architecture cover image -->
@@ -58,28 +63,11 @@ Template Name: cover page template
 
 <!-- get landscape cover image -->
 
-<?php
-
-$image = get_field('landscape');
-$size = 'full'; // (thumbnail, medium, large, full or custom size)
-
-if( $image ) {
-
-	echo wp_get_attachment_image( $image, $size );
-
-}
-
-?>
-
-
-<!--
 <?php if( get_field('landscape') ): ?>
 
 	<img src="<?php the_field('landscape'); ?>" />
 
 <?php endif; ?>
--->
-
 
 <!-- get public cover image -->
 
@@ -98,10 +86,14 @@ if( $image ) {
 <?php endif; ?>
 
 </div>
+<?php // */ ?>
 
 <!-- END -->
 
 <?php endwhile; endif; ?>
+
+
+
 
 
 <!-- Add JS from footer -->

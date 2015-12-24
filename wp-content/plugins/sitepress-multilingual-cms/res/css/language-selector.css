@@ -101,11 +101,11 @@
 }
 #lang_sel a.lang_sel_sel {
   background: url(../img/nav-arrow-down.png) #fff right no-repeat;
-  color: #444;
+  color: rgba(0,0,0,0) !important;
 }
 #lang_sel a.lang_sel_sel:hover {
   text-decoration: none;
-  color: #000;
+  background: transparent !important;
 }
 #lang_sel table {
   position: absolute;
@@ -114,8 +114,8 @@
   border-collapse: collapse;
 }
 #lang_sel a:hover, #lang_sel ul ul a:hover, #lang_sel :hover > a, #lang_sel ul ul :hover > a {
-  color: #000;
-  background: #eee;
+  color: transparent !important;
+  background: transparent !important;
 }
 #lang_sel img.iclflag {
   width: 18px;
