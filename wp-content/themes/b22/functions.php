@@ -50,7 +50,6 @@
 			'post_type'    => 'post',
 			'rewrite'      => array( 'slug' => 'people' ),
 		),
-
 		array(
 			'slug'         => 'size',
 			'single_name'  => 'Size',
@@ -99,17 +98,17 @@
 		);
 		foreach( $taxonomies as $taxonomy ) {
 			$labels = array(
-				'name'				=> _x ( $taxonomy['plural_name'],'taxonomy general name', 'b22'),
-				'singular_name' 	=> _x ( $taxonomy['single_name'],'taxonomy singular name', 'b22'),
-				'description'		=> __ ( $taxonomy['description'], 'b22'),
-				'search_items'		=> __ ( 'Search ' . $taxonomy['plural_name'], 'b22' ),
-				'all_items'			=> __ ( 'All ' . $taxonomy['plural_name'], 'b22' ),
-				'parent_item'		=> __ ( 'Parent ' . $taxonomy['single_name'], 'b22' ),
+				'name'				=> _x ( $taxonomy['plural_name'],'taxonomy general name'),
+				'singular_name' 	=> _x ( $taxonomy['single_name'],'taxonomy singular name'),
+				'description'		=> __ ( $taxonomy['description']),
+				'search_items'		=> __ ( 'Search ' . $taxonomy['plural_name'] ),
+				'all_items'			=> __ ( 'All ' . $taxonomy['plural_name'] ),
+				'parent_item'		=> __ ( 'Parent ' . $taxonomy['single_name'] ),
 				'parent_item_colon' => __ ( 'Parent ' . $taxonomy['single_name'] . ':' ),
-				'edit_item'			=> __ ( 'Edit ' . $taxonomy['single_name'], 'b22' ),
-				'update_item'		=> __ ( 'Update ' . $taxonomy['single_name'], 'b22' ),
-				'add_new_item'		=> __ ( 'Add New ' . $taxonomy['single_name'], 'b22' ),
-				'new_item_name'		=> __ ( 'New ' . $taxonomy['single_name'] . ' Name', 'b22' ),
+				'edit_item'			=> __ ( 'Edit ' . $taxonomy['single_name'] ),
+				'update_item'		=> __ ( 'Update ' . $taxonomy['single_name'] ),
+				'add_new_item'		=> __ ( 'Add New ' . $taxonomy['single_name'] ),
+				'new_item_name'		=> __ ( 'New ' . $taxonomy['single_name'] . ' Name' ),
 				'menu_name'			=> __ ( $taxonomy['plural_name'])
 			);
 			
@@ -117,11 +116,6 @@
 			$hierarchical = isset( $taxonomy['hierarchical'] ) ? $taxonomy['hierarchical'] : true;
 		
 			register_taxonomy( $taxonomy['slug'], $taxonomy['post_type'], array(
-			//	'hierarchical' => $hierarchical,
-			//	'labels' => $labels,
-			//	'show_ui' => true,
-			//	'query_var' => true,
-			//	'rewrite' => $rewrite,
 		        'labels' => $labels,
 		        'public' => true,
 		        'show_in_nav_menus' => true,
@@ -129,7 +123,8 @@
 		        'show_tagcloud' => true,
 		        'hierarchical' => true,
 		        'rewrite' => true,
-		        'query_var' => true
+		        'query_var' => true,
+		        'rewrite' => array( 'slug' => __( $taxonomy['slug'], 'URL slug', 'text-domain' ) )
 			));
 		}
 		
@@ -173,4 +168,60 @@
 
 	  return implode('', $out );
 	}
+
+
+
+
+
+	// $genre_labels = array(
+
+	// 	'name'              => _x( 'Genres', 'taxonomy general name' ),
+
+	// 	'singular_name'     => _x( 'Genre', 'taxonomy singular name' ),
+
+	// 	'search_items'      => __( 'Search Genres' ),
+
+	// 	'all_items'         => __( 'All Genres' ),
+
+	// 	'parent_item'       => __( 'Parent Genre' ),
+
+	// 	'parent_item_colon' => __( 'Parent Genre:' ),
+
+	// 	'edit_item'         => __( 'Edit Genre' ),
+
+	// 	'update_item'       => __( 'Update Genre' ),
+
+	// 	'add_new_item'      => __( 'Add New Genre' ),
+
+	// 	'new_item_name'     => __( 'New Genre Name' ),
+
+	// 	'menu_name'         => __( 'Genre' ),
+
+	// );
+
+
+
+	// $genre_args = array(
+
+	// 	'hierarchical'      => true,
+
+	// 	'labels'            => $genre_labels,
+
+	// 	'show_ui'           => true,
+
+	// 	'show_admin_column' => true,
+
+	// 	'query_var'         => true,
+
+	// 	'rewrite'           => array( 'slug' => 'genre' ),
+
+	// );
+
+
+
+	// register_taxonomy( 'genre', array( 'post' ), $genre_args );
+
+
+
+
 ?>

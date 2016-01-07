@@ -1185,7 +1185,7 @@ a.menu .page-id-94 {
 
 @media (max-width: 767px) {
   .mobile-only { display: block !important; }
-  #tax_cloud { display: none; }
+  #tax_cloud { display: none !important; }
 }
 @media (min-width: 768px) {
   #home-posts {

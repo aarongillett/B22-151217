@@ -105,7 +105,499 @@ Template Name: cover page template
 
 <script src="<?php bloginfo('template_directory') ?>/_/js/imagesloaded.pkgd.min.js"></script>
 <script src="<?php bloginfo('template_directory') ?>/_/js/isotope.pkgd.min.js"></script>
-<script src="<?php bloginfo('template_directory') ?>/_/js/B22.js"></script>
+<!-- <script src="<?php bloginfo('template_directory') ?>/_/js/B22.js"></script> -->
+
+
+<script>
+
+
+	/*!
+	 * Change background image on hover
+	 */
+
+
+	// remap jQuery to $
+	(function($){})(window.jQuery);
+
+	//	Preload Images
+	//  $('<img/>').hide().attr('src', 'http://www.b22.it/web/wp-content/uploads/2015/12/B22-1.jpg').load(function(){
+	//      $('body').append($(this));
+	//  });
+	//  $('<img/>').hide().attr('src', 'http://www.b22.it/web/wp-content/uploads/2015/12/B22-2.jpg').load(function(){
+	//      $('body').append($(this));
+	//  });
+	//  $('<img/>').hide().attr('src', 'http://www.b22.it/web/wp-content/uploads/2015/12/B22-3.jpg').load(function(){
+	//      $('body').append($(this));
+	//  });
+	//  $('<img/>').hide().attr('src', 'http://www.b22.it/web/wp-content/uploads/2015/12/B22-4.jpg').load(function(){
+	//      $('body').append($(this));
+	//  });
+	//  $('<img/>').hide().attr('src', 'http://www.b22.it/web/wp-content/uploads/2015/12/B22-8.jpg').load(function(){
+	//      $('body').append($(this));
+	//  });
+	//  $('<img/>').hide().attr('src', 'http://www.b22.it/web/wp-content/uploads/2015/11/018PR_8297FR-LQ.jpg').load(function(){
+	//      $('body').append($(this));
+	//  });
+
+
+
+
+
+
+
+	/*
+	################################################################################################################################
+	PRELOAD IMAGES
+	################################################################################################################################
+	*/
+
+
+	<?php
+	$args = array(
+	  'public'   => true,
+	  '_builtin' => false
+	);
+	$output = 'objects'; // or names
+	$operator = 'and'; // 'and' or 'or'
+	$taxonomies = get_taxonomies( $args, $output, $operator );
+
+//	$taxonomies_objects = get_object_taxonomies( 'post', 'objects' );
+//	print_r($taxonomies_objects);
+
+//	global $post;
+//	$taxonomies_objects_2 = get_object_taxonomies($post, 'objects');
+//	print_r($taxonomies_objects_2);
+//
+	// echo '// tax open';
+
+	if ( $taxonomies ) {
+	  foreach ( $taxonomies  as $single_taxonomy ) {
+
+		$taxonomy_name = $single_taxonomy->labels->name; 
+		$taxonomy_singular_name = $single_taxonomy->labels->singular_name; 
+		
+		// print_r($single_taxonomy->labels);
+		$taxonomy = $single_taxonomy->rewrite[slug]; 
+
+//	    echo '<strong>' . _x($taxonomy_singular_name,'taxonomy general name') . '/' . _x($taxonomy_name,'taxonomy singular name') . '</strong> ';
+//	    echo "\n\n"."\t\t".'// >> ' . $taxonomy . ' << '."\n";
+
+		$args = array(
+		    'orderby'           => 'name',
+		    'order'             => 'ASC',
+			'hide_empty'        => true,
+		    'exclude'           => array(),
+		    'exclude_tree'      => array(),
+		    'include'           => array(),
+		    'number'            => '',
+		    'fields'            => 'all',
+		    'slug'              => '',
+		    'parent'            => '',
+		    'hierarchical'      => true,
+		    'child_of'          => 0,
+		    'childless'         => false,
+		    'get'               => '',
+		    'name__like'        => '',
+		    'description__like' => '',
+		    'pad_counts'        => false,
+		    'offset'            => '',
+		    'search'            => '',
+		    'cache_domain'      => 'core'
+		);
+
+		$terms = get_terms($taxonomy, $args);
+
+	//	print_r($terms);
+
+		foreach ($terms as $term) {
+
+			${"arr_" . $term->slug . "_related"}[] = '';
+
+			// get posts by term
+
+			// query
+			$posts_in_term = new WP_Query(
+				array(
+					'post_type' => 'post',
+					'tax_query' => array(
+						array(
+						  'taxonomy' => $term->taxonomy,
+						  'field' => 'slug',
+						  'terms' => $term->slug
+						)
+					)
+				)
+			);
+
+			// loop
+			if ( $posts_in_term->have_posts() ) {
+				$posts_in_term_count = $posts_in_term->post_count;
+				$i = 0;
+				while ( $posts_in_term->have_posts() ) {
+					$i++;
+					$posts_in_term->the_post();
+
+					foreach ($posts_in_term as $post_in_term) {
+
+						// print_r($post_in_term);
+
+						if($post_in_term->ID){
+
+						//	echo "\n\n\n".'post: '.$post_in_term->ID.' '.$post_in_term->post_name.' <br />'."\n\n";
+
+							// get terms for posts
+
+							// get customs taxonomies array
+							$global_taxonomies_list = get_taxonomies();
+							// remove non custom taxonomies
+							unset($global_taxonomies_list[category], $global_taxonomies_list[post_tag], $global_taxonomies_list[nav_menu], $global_taxonomies_list[link_category], $global_taxonomies_list[post_format]);
+							// var_dump($global_taxonomies_list);
+						//	print_r($global_taxonomies_list);
+
+							// list vales for this post
+						//	echo "\n".'list values for this post: ';
+							foreach ($global_taxonomies_list as $global_taxonomy) {
+								$values_list = wp_get_post_terms($post_in_term->ID, $global_taxonomy, array('fields' => 'all'));
+								foreach($values_list as $value) {
+								//	echo("\n\n\n".$value->slug."\n\n");
+						//		//	echo '<br />- '.$global_taxonomy.': '.$value->name; //do something here
+									array_push(${"arr_" . $term->slug . "_related"}, $value->slug);
+								}
+							}
+
+						}
+					}
+				}
+			} else {
+				// no posts found
+			}
+			// reset
+			wp_reset_postdata();
+
+			unset(${"arr_" . $term->slug . "_related"}[0]);
+			${"arr_" . $term->slug . "_related"} = array_unique(${"arr_" . $term->slug . "_related"});
+
+			// if(!get_field('taxonomy_term_hidden',$taxonomy.'_'.$term->term_id)){			
+
+				// echo "\n"."\t\t\t\t".'// '.$term->slug.'('.$term->count.')'."\n\n";
+
+				$taxonomy_term_image_arr = get_field('taxonomy_term_image',$taxonomy.'_'.$term->term_id );
+				if($taxonomy_term_image_arr){
+				echo " 
+
+		    $('<img/>').hide().attr('src', '".$taxonomy_term_image_arr[url]."').load(function(){
+		        $('body').append($(this));
+		    });
+
+				";
+				}
+
+			// }
+			
+			unset(${"arr_" . $term->slug . "_related"});
+
+		}
+
+	  }
+
+	}
+	?>
+
+
+	/*
+	################################################################################################################################
+	################################################################################################################################
+	*/
+
+
+
+
+
+
+
+
+
+
+
+	//Define Variables
+	var $item = $('.item');
+
+	var $intro = $('.intro');
+	var $body = $('.body');
+	var $first = $('#first');
+	var $two = $('#second');
+	var $three = $('#third');
+	var $four = $('#fourth');
+	var $five = $('#fifth');
+	var $six = $('.six');
+
+
+	//  Hide everything but item hovered
+	//  $item.on({
+	//      mouseenter:function(){
+	//          $intro.css({opacity:0});
+	//          $item.not(this).css({opacity:0});
+	//          $first.css({opacity:1})
+	//      },
+	//      mouseleave:function(){
+	//          $intro.css({opacity:1}).removeAttr('style');
+	//          $item.css({opacity:1}).removeAttr('style');
+	//      }
+	//  });
+
+
+	/*
+	################################################################################################################################
+	OLD STATIC LIST OF TERMS WITH BACKGROUND
+	################################################################################################################################
+	
+	//First:hover
+	    $('#first').hover(function() {
+	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-1.jpg")');
+	    }, function() {
+	        $('body').css('background', '');
+	    });
+
+	//Second:hover
+	    $('#second').hover(function() {
+	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-2.jpg")');
+	    }, function() {
+	        $('body').css('background', '');
+	    });
+
+	//Third:hover
+	    $('#third').hover(function() {
+	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-3.jpg")');
+	    }, function() {
+	        $('body').css('background', '');
+	    });
+
+	//Fourth:hover
+	    $('#fourth').hover(function() {
+	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-4.jpg")');
+	    }, function() {
+	        $('body').css('background', '');
+	    });
+
+	//Fifth:hover
+	    $('#fifth').hover(function() {
+	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-8.jpg")');
+	    }, function() {
+	        $('body').css('background', '');
+	    });
+
+	//Sixth:hover
+	    $('#sixth').hover(function() {
+	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/11/018PR_8297FR-LQ.jpg")');
+	    }, function() {
+	        $('body').css('background', '');
+	    });
+	
+	################################################################################################################################
+	################################################################################################################################
+	*/
+
+
+
+	/*
+	################################################################################################################################
+	NEW DYNAMIC LIST OF TERMS WITH BACKGROUND
+	################################################################################################################################
+	*/
+
+
+	<?php
+	$args = array(
+	  'public'   => true,
+	  '_builtin' => false
+	);
+	$output = 'objects'; // or names
+	$operator = 'and'; // 'and' or 'or'
+	$taxonomies = get_taxonomies( $args, $output, $operator );
+
+//	$taxonomies_objects = get_object_taxonomies( 'post', 'objects' );
+//	print_r($taxonomies_objects);
+
+//	global $post;
+//	$taxonomies_objects_2 = get_object_taxonomies($post, 'objects');
+//	print_r($taxonomies_objects_2);
+//
+	echo '// tax open
+
+	';
+
+	if ( $taxonomies ) {
+	  foreach ( $taxonomies  as $single_taxonomy ) {
+
+		$taxonomy_name = $single_taxonomy->labels->name; 
+		$taxonomy_singular_name = $single_taxonomy->labels->singular_name; 
+		
+		// print_r($single_taxonomy->labels);
+		$taxonomy = $single_taxonomy->rewrite[slug]; 
+
+//	    echo '<strong>' . _x($taxonomy_singular_name,'taxonomy general name') . '/' . _x($taxonomy_name,'taxonomy singular name') . '</strong> ';
+	    echo "\n\n"."\t\t".'// >> ' . $taxonomy . ' << '."\n";
+
+		$args = array(
+		    'orderby'           => 'name',
+		    'order'             => 'ASC',
+			'hide_empty'        => true,
+		    'exclude'           => array(),
+		    'exclude_tree'      => array(),
+		    'include'           => array(),
+		    'number'            => '',
+		    'fields'            => 'all',
+		    'slug'              => '',
+		    'parent'            => '',
+		    'hierarchical'      => true,
+		    'child_of'          => 0,
+		    'childless'         => false,
+		    'get'               => '',
+		    'name__like'        => '',
+		    'description__like' => '',
+		    'pad_counts'        => false,
+		    'offset'            => '',
+		    'search'            => '',
+		    'cache_domain'      => 'core'
+		);
+
+		$terms = get_terms($taxonomy, $args);
+
+	//	print_r($terms);
+
+		foreach ($terms as $term) {
+
+			${"arr_" . $term->slug . "_related"}[] = '';
+
+			// get posts by term
+
+			// query
+			$posts_in_term = new WP_Query(
+				array(
+					'post_type' => 'post',
+					'tax_query' => array(
+						array(
+						  'taxonomy' => $term->taxonomy,
+						  'field' => 'slug',
+						  'terms' => $term->slug
+						)
+					)
+				)
+			);
+
+			// loop
+			if ( $posts_in_term->have_posts() ) {
+				$posts_in_term_count = $posts_in_term->post_count;
+				$i = 0;
+				while ( $posts_in_term->have_posts() ) {
+					$i++;
+					$posts_in_term->the_post();
+
+					foreach ($posts_in_term as $post_in_term) {
+
+						// print_r($post_in_term);
+
+						if($post_in_term->ID){
+
+						//	echo "\n\n\n".'post: '.$post_in_term->ID.' '.$post_in_term->post_name.' <br />'."\n\n";
+
+							// get terms for posts
+
+							// get customs taxonomies array
+							$global_taxonomies_list = get_taxonomies();
+							// remove non custom taxonomies
+							unset($global_taxonomies_list[category], $global_taxonomies_list[post_tag], $global_taxonomies_list[nav_menu], $global_taxonomies_list[link_category], $global_taxonomies_list[post_format]);
+							// var_dump($global_taxonomies_list);
+						//	print_r($global_taxonomies_list);
+
+							// list vales for this post
+						//	echo "\n".'list values for this post: ';
+							foreach ($global_taxonomies_list as $global_taxonomy) {
+								$values_list = wp_get_post_terms($post_in_term->ID, $global_taxonomy, array('fields' => 'all'));
+								foreach($values_list as $value) {
+								//	echo("\n\n\n".$value->slug."\n\n");
+						//		//	echo '<br />- '.$global_taxonomy.': '.$value->name; //do something here
+									array_push(${"arr_" . $term->slug . "_related"}, $value->slug);
+								}
+							}
+
+						}
+					}
+				}
+			} else {
+				// no posts found
+			}
+			// reset
+			wp_reset_postdata();
+
+			unset(${"arr_" . $term->slug . "_related"}[0]);
+			${"arr_" . $term->slug . "_related"} = array_unique(${"arr_" . $term->slug . "_related"});
+
+			// if(!get_field('taxonomy_term_hidden',$taxonomy.'_'.$term->term_id)){			
+
+				// echo "\n"."\t\t\t\t".'// '.$term->slug.'('.$term->count.')'."\n\n";
+
+				$taxonomy_term_image_arr = get_field('taxonomy_term_image',$taxonomy.'_'.$term->term_id );
+				if($taxonomy_term_image_arr){
+				echo " 
+					
+		    $('.container.home .intro .".$term->slug."').hover(function() {
+		        $('body').css('background-image', 'url(".$taxonomy_term_image_arr[url].")');
+		    }, function() {
+		        $('body').css('background', '');
+		    });
+				";
+				}
+
+			// }
+			
+			unset(${"arr_" . $term->slug . "_related"});
+
+		}
+
+	  }
+
+	}
+	?>
+
+
+	/*
+	################################################################################################################################
+	################################################################################################################################
+	*/
+
+
+	//Tag cloud animation
+	//Define variables
+
+	    var $term = $("#tax_cloud a.tax_term");
+	    var $tax_cloud = $("#tax_cloud");
+	    var $all_projects = $("#navbar li.current_page_item a");
+
+	//Click taxonomy to add "margin_10" class to #tag_cloud
+
+	$term.on({
+	    click:function(){
+	        $tax_cloud.addClass( "margin_10" );
+	    },
+	});
+
+	//Click "All Projects" to remove "margin_10" class from #tag_cloud
+
+	$all_projects.on({
+	    click:function(){
+	        $tax_cloud.removeClass( "margin_10" );
+	    },
+	});
+
+
+
+
+
+
+
+</script>
+
 
 <!-- this is where we put our custom functions -->
 <script src="<?php bloginfo('template_directory') ?>/_/js/functions.js"></script>

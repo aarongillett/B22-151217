@@ -11,15 +11,43 @@ Template Name: test template
 
 	<div id="tax_cloud">
 
-	<p>
+	<p>	
 
-	
-	<?php
-	
-	// echo apply_filters( 'wpml_translate_single_string','Field','b22','taxonomy general name' );
-	echo _x('Field', 'taxonomy general name');
-	?>
+	<?php echo _x('Field','taxonomy singular name'); ?>
+	<br />
+	<?php echo _x('Programme','taxonomy singular name'); ?>
+	<br />
+	<?php echo _x('Size','taxonomy singular name'); ?>
+	<br />
+	<?php echo _x('Location','taxonomy singular name'); ?>
+	<br />
+	<?php echo _x('Client','taxonomy singular name'); ?>
+	<br />
+	<?php echo _x('Award','taxonomy singular name'); ?>
+	<br />
+	<?php echo _x('Date','taxonomy singular name'); ?>
+	<br />
+	<?php echo _x('People','taxonomy singular name'); ?>
+	<br />
+	<br />
 
+	<?php echo _x('Fields','taxonomy general name'); ?>
+	<br />
+	<?php echo _x('Programme','taxonomy general name'); ?>
+	<br />
+	<?php echo _x('Size','taxonomy general name'); ?>
+	<br />
+	<?php echo _x('Location','taxonomy general name'); ?>
+	<br />
+	<?php echo _x('Clients','taxonomy general name'); ?>
+	<br />
+	<?php echo _x('Awards','taxonomy general name'); ?>
+	<br />
+	<?php echo _x('Date','taxonomy general name'); ?>
+	<br />
+	<?php echo _x('People','taxonomy general name'); ?>
+	<br />
+	<br />
 
 	<?php 
 	$args = array(
@@ -36,15 +64,16 @@ Template Name: test template
 
 	if($taxonomies){
 		foreach ($taxonomies as $taxonomy) {
-			echo('-');
+		//	echo('-');
 		}
 	}
 
 	if($taxonomies_objects){
 		foreach ($taxonomies_objects as $taxonomies_object) {
-			// _e($taxonomies_object->label,'taxonomy singular name','b22');
-			// print_r($taxonomies_object->label);
-			// print_r($taxonomies_object->labels);
+
+			// _e($taxonomies_object->label,'taxonomy singular name');
+		//	print_r($taxonomies_object->label);
+			print_r($taxonomies_object->labels);
 			// echo apply_filters( $tag, $value );
 			// echo apply_filters( 'wpml_translate_single_string','People','b22' );
 			

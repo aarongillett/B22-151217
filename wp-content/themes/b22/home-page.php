@@ -14,6 +14,8 @@ Template Name: home page template
 <!--	<p><a class="view_all" href="#">All Projects</a></p>
 -->
 
+
+
 	<p>
 
 	<?php
@@ -21,7 +23,7 @@ Template Name: home page template
 	  'public'   => true,
 	  '_builtin' => false
 	);
-	$output = 'names'; // or objects
+	$output = 'objects'; // or names
 	$operator = 'and'; // 'and' or 'or'
 	$taxonomies = get_taxonomies( $args, $output, $operator );
 
@@ -35,10 +37,17 @@ Template Name: home page template
 	echo '<!-- tax open -->';
 
 	if ( $taxonomies ) {
-	  foreach ( $taxonomies  as $taxonomy ) {
+	  foreach ( $taxonomies  as $single_taxonomy ) {
+
+		$taxonomy_name = $single_taxonomy->labels->name; 
+		$taxonomy_singular_name = $single_taxonomy->labels->singular_name; 
+		
+		// print_r($single_taxonomy->labels);
+		$taxonomy = $single_taxonomy->rewrite[slug]; 
 
 	  	echo "\n\n\n\n";
-	    echo '<strong>' . $taxonomy . '</strong> ';
+//	    echo '<strong>' . _x($taxonomy_singular_name,'taxonomy general name') . '/' . _x($taxonomy_name,'taxonomy singular name') . '</strong> ';
+	    echo '<strong>' . _x($taxonomy_singular_name,'taxonomy general name') . '</strong> ';
 
 		$args = array(
 		    'orderby'           => 'name',
@@ -132,17 +141,21 @@ Template Name: home page template
 			// reset
 			wp_reset_postdata();
 
-
-
 			unset(${"arr_" . $term->slug . "_related"}[0]);
 			${"arr_" . $term->slug . "_related"} = array_unique(${"arr_" . $term->slug . "_related"});
-			echo '<a id="'.$term->slug.'" href="'.get_bloginfo('url').'/'.$term->taxonomy.'/'.$term->slug.'/" class="tax_term ';
-			foreach (${"arr_" . $term->slug . "_related"} as $the_term) {
-				echo ' '.$the_term.' ';
-			}
-			echo '">'.$term->name.' ('.$term->count.')</a> ';
-			unset(${"arr_" . $term->slug . "_related"});
 
+			if(!get_field('taxonomy_term_hidden',$taxonomy.'_'.$term->term_id)){			
+
+				echo '<a id="'.$term->slug.'" href="'.get_bloginfo('url').'/'.$term->taxonomy.'/'.$term->slug.'/" class="tax_term ';
+				foreach (${"arr_" . $term->slug . "_related"} as $the_term) {
+					echo ' '.$the_term.' ';
+				}
+				echo '">';
+				echo $term->name.' <span class="tax_term_count">('.$term->count.')</span></a> ';
+
+			}
+			
+			unset(${"arr_" . $term->slug . "_related"});
 
 		}
 
