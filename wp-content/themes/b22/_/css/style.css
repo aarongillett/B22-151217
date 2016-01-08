@@ -1071,10 +1071,17 @@ img.responsive {
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  padding-right: 5px;
 }
 #tax_cloud p a {
   color: #4a4a4a;
   font-size: 30px;
+}
+span.tax_term_count {
+  font-size: 16px;
+  vertical-align: super;
+  padding-right: 5px;
+  padding-left: 2px;
 }
 #tax_cloud p a:hover {
   color: red;

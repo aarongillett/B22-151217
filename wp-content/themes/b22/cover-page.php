@@ -173,11 +173,11 @@ Template Name: cover page template
 	if ( $taxonomies ) {
 	  foreach ( $taxonomies  as $single_taxonomy ) {
 
-		$taxonomy_name = $single_taxonomy->labels->name; 
-		$taxonomy_singular_name = $single_taxonomy->labels->singular_name; 
-		
+		$taxonomy_name = $single_taxonomy->labels->name;
+		$taxonomy_singular_name = $single_taxonomy->labels->singular_name;
+
 		// print_r($single_taxonomy->labels);
-		$taxonomy = $single_taxonomy->rewrite[slug]; 
+		$taxonomy = $single_taxonomy->rewrite[slug];
 
 //	    echo '<strong>' . _x($taxonomy_singular_name,'taxonomy general name') . '/' . _x($taxonomy_name,'taxonomy singular name') . '</strong> ';
 //	    echo "\n\n"."\t\t".'// >> ' . $taxonomy . ' << '."\n";
@@ -277,13 +277,13 @@ Template Name: cover page template
 			unset(${"arr_" . $term->slug . "_related"}[0]);
 			${"arr_" . $term->slug . "_related"} = array_unique(${"arr_" . $term->slug . "_related"});
 
-			// if(!get_field('taxonomy_term_hidden',$taxonomy.'_'.$term->term_id)){			
+			// if(!get_field('taxonomy_term_hidden',$taxonomy.'_'.$term->term_id)){
 
 				// echo "\n"."\t\t\t\t".'// '.$term->slug.'('.$term->count.')'."\n\n";
 
 				$taxonomy_term_image_arr = get_field('taxonomy_term_image',$taxonomy.'_'.$term->term_id );
 				if($taxonomy_term_image_arr){
-				echo " 
+				echo "
 
 		    $('<img/>').hide().attr('src', '".$taxonomy_term_image_arr[url]."').load(function(){
 		        $('body').append($(this));
@@ -293,7 +293,7 @@ Template Name: cover page template
 				}
 
 			// }
-			
+
 			unset(${"arr_" . $term->slug . "_related"});
 
 		}
@@ -348,59 +348,6 @@ Template Name: cover page template
 
 	/*
 	################################################################################################################################
-	OLD STATIC LIST OF TERMS WITH BACKGROUND
-	################################################################################################################################
-	
-	//First:hover
-	    $('#first').hover(function() {
-	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-1.jpg")');
-	    }, function() {
-	        $('body').css('background', '');
-	    });
-
-	//Second:hover
-	    $('#second').hover(function() {
-	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-2.jpg")');
-	    }, function() {
-	        $('body').css('background', '');
-	    });
-
-	//Third:hover
-	    $('#third').hover(function() {
-	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-3.jpg")');
-	    }, function() {
-	        $('body').css('background', '');
-	    });
-
-	//Fourth:hover
-	    $('#fourth').hover(function() {
-	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-4.jpg")');
-	    }, function() {
-	        $('body').css('background', '');
-	    });
-
-	//Fifth:hover
-	    $('#fifth').hover(function() {
-	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-8.jpg")');
-	    }, function() {
-	        $('body').css('background', '');
-	    });
-
-	//Sixth:hover
-	    $('#sixth').hover(function() {
-	        $('body').css('background-image', 'url("http://www.b22.it/web/wp-content/uploads/2015/11/018PR_8297FR-LQ.jpg")');
-	    }, function() {
-	        $('body').css('background', '');
-	    });
-	
-	################################################################################################################################
-	################################################################################################################################
-	*/
-
-
-
-	/*
-	################################################################################################################################
 	NEW DYNAMIC LIST OF TERMS WITH BACKGROUND
 	################################################################################################################################
 	*/
@@ -429,11 +376,11 @@ Template Name: cover page template
 	if ( $taxonomies ) {
 	  foreach ( $taxonomies  as $single_taxonomy ) {
 
-		$taxonomy_name = $single_taxonomy->labels->name; 
-		$taxonomy_singular_name = $single_taxonomy->labels->singular_name; 
-		
+		$taxonomy_name = $single_taxonomy->labels->name;
+		$taxonomy_singular_name = $single_taxonomy->labels->singular_name;
+
 		// print_r($single_taxonomy->labels);
-		$taxonomy = $single_taxonomy->rewrite[slug]; 
+		$taxonomy = $single_taxonomy->rewrite[slug];
 
 //	    echo '<strong>' . _x($taxonomy_singular_name,'taxonomy general name') . '/' . _x($taxonomy_name,'taxonomy singular name') . '</strong> ';
 	    echo "\n\n"."\t\t".'// >> ' . $taxonomy . ' << '."\n";
@@ -533,16 +480,18 @@ Template Name: cover page template
 			unset(${"arr_" . $term->slug . "_related"}[0]);
 			${"arr_" . $term->slug . "_related"} = array_unique(${"arr_" . $term->slug . "_related"});
 
-			// if(!get_field('taxonomy_term_hidden',$taxonomy.'_'.$term->term_id)){			
+			// if(!get_field('taxonomy_term_hidden',$taxonomy.'_'.$term->term_id)){
 
 				// echo "\n"."\t\t\t\t".'// '.$term->slug.'('.$term->count.')'."\n\n";
 
 				$taxonomy_term_image_arr = get_field('taxonomy_term_image',$taxonomy.'_'.$term->term_id );
 				if($taxonomy_term_image_arr){
-				echo " 
-					
+				echo "
+
 		    $('.container.home .intro .".$term->slug."').hover(function() {
 		        $('body').css('background-image', 'url(".$taxonomy_term_image_arr[url].")');
+		        $('body').css('background-size', 'cover');
+		        $('body').css('background-position', 'center', 'center');
 		    }, function() {
 		        $('body').css('background', '');
 		    });
@@ -550,7 +499,7 @@ Template Name: cover page template
 				}
 
 			// }
-			
+
 			unset(${"arr_" . $term->slug . "_related"});
 
 		}
