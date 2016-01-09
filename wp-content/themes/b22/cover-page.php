@@ -11,22 +11,37 @@ Template Name: cover page template
 <?php while (have_posts()) : the_post(); ?>
 
 
-<!-- get page content -->
-
 <div class="cover_nav">
 	<div id="page_wrap" class="container home">
 		<div class="row">
 			<div class="col-md-10">
-				<div class="intro">
+				<div class="intro"> <!-- get intro content -->
 					<?php the_content(); ?>
 				</div>
 			</div>
 			<div class="col-md-2">
-				<div class="language">
+				<div class="  ">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-s-2 col-md-2 col-lg-2">
+				<div class="news_post">
+					<a href ="http://www.b22.it/web/news">News</a>
+				</div>
+			</div>
+			<div class="col-xs-6 col-s-6 col-md-4 col-lg-4">
+				<div class="news_post"> <!-- get news post -->
+					<?php echo do_shortcode("[list-news-items count=1 show_thumbnail=0 show_excerpt=1 show_date=0] "); ?>
+				</div>
+			</div>
+			<div class="col-xs-4 col-s-4 col-md-6 col-lg-6">
+				<div class="language"> <!-- get language selector -->
 					<?php do_action('wpml_add_language_selector'); ?>
 				</div>
 			</div>
 		</div>
+
 	</div>
 </div>
 

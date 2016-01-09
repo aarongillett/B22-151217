@@ -14,7 +14,7 @@
 //	return 30; }
 
 	/* Disable the Admin Bar. */
-	add_filter( 'show_admin_bar', '__return_false' ); 
+	add_filter( 'show_admin_bar', '__return_false' );
 
 	/**
 	 * Register Multiple Taxonomies
@@ -25,7 +25,7 @@
 	function be_register_taxonomies() {
 
 		$taxonomies = array(
-	
+
 		array(
 			'slug'         => 'field',
 			'single_name'  => 'Field',
@@ -58,7 +58,7 @@
 			'post_type'    => 'post',
 			'rewrite'      => array( 'slug' => 'size' ),
 		),
-		
+
 		array(
 			'slug'         => 'location',
 			'single_name'  => 'Location',
@@ -67,7 +67,7 @@
 			'post_type'    => 'post',
 			'rewrite'      => array( 'slug' => 'location' ),
 		),
-		
+
 		array(
 			'slug'         => 'client',
 			'single_name'  => 'Client',
@@ -76,7 +76,7 @@
 			'post_type'    => 'post',
 			'rewrite'      => array( 'slug' => 'client' ),
 		),
-		
+
 		array(
 			'slug'         => 'award',
 			'single_name'  => 'Award',
@@ -85,7 +85,7 @@
 			'post_type'    => 'post',
 			'rewrite'      => array( 'slug' => 'award' ),
 		),
-			
+
 		array(
 			'slug'         => 'Date',
 			'single_name'  => 'Date',
@@ -94,7 +94,7 @@
 			'post_type'    => 'post',
 			'rewrite'      => array( 'slug' => 'date' ),
 		),
-			
+
 		);
 		foreach( $taxonomies as $taxonomy ) {
 			$labels = array(
@@ -111,10 +111,10 @@
 				'new_item_name'		=> __ ( 'New ' . $taxonomy['single_name'] . ' Name' ),
 				'menu_name'			=> __ ( $taxonomy['plural_name'])
 			);
-			
+
 			$rewrite = isset( $taxonomy['rewrite'] ) ? $taxonomy['rewrite'] : array( 'slug' => $taxonomy['slug'] );
 			$hierarchical = isset( $taxonomy['hierarchical'] ) ? $taxonomy['hierarchical'] : true;
-		
+
 			register_taxonomy( $taxonomy['slug'], $taxonomy['post_type'], array(
 		        'labels' => $labels,
 		        'public' => true,
@@ -127,7 +127,7 @@
 		        'rewrite' => array( 'slug' => __( $taxonomy['slug'], 'URL slug', 'text-domain' ) )
 			));
 		}
-		
+
 	}
 	add_action( 'init', 'be_register_taxonomies' );
 
@@ -220,8 +220,6 @@
 
 
 	// register_taxonomy( 'genre', array( 'post' ), $genre_args );
-
-
 
 
 ?>

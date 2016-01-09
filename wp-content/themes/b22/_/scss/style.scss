@@ -254,12 +254,13 @@ footer {
 }
 
 .intro {
-  font-size: 38px;
-  line-height: 1.25;
+  font-size: 36px;
+  letter-spacing: 1px;
+  line-height: 1.35;
   max-width: 800px;
   font-weight: 100;
   padding-top: 15%;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
   vertical-align: bottom;
 }
 
@@ -305,24 +306,6 @@ a .menu .page-id-94 {
 #lang_sel_list a.lang_sel_sel, #lang_sel_list a.lang_sel_sel:visited {background-color: transparent !important;}
 
 #lang_sel_list ul {border-top: none !important;}
-
-/* Background classes */
-
-.bg1 {
-    background: url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-1.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.bg2 {
-    background: url("http://www.b22.it/web/wp-content/uploads/2015/12/B22-2.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
 
 /* END */
 
