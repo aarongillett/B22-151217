@@ -971,7 +971,7 @@ h6,
 .h5,
 .h6 {
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.25;
   color: inherit;
 }
@@ -1185,11 +1185,11 @@ a.bg-danger:hover {
   background-color: #e4b9b9;
 }
 .page-header {
-  padding: 40px 0 30px;
+  padding: 40px 30px 30px;
 }
 .page-header-single {
-  position: absolute;
-  padding: 40px 0 30px;
+  position: relative;
+  padding: 40px 30px 30px;
 }
 a.page-header-single {
   color: #fff !important;
@@ -3818,7 +3818,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     /*border-radius: 4px;*/
   }
 }
-@media (min-width: 333px) {
+@media (min-width: 222px) {
   .navbar-header {
     float: left;
   }
@@ -3835,7 +3835,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-collapse.in {
   overflow-y: auto;
 }
-@media (min-width: 333px) {
+@media (min-width: 222px) {
   .navbar-collapse {
     width: auto;
     border-top: 0;
@@ -3876,7 +3876,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-right: -15px;
   margin-left: -15px;
 }
-@media (min-width: 333px) {
+@media (min-width: 222px) {
   .container > .navbar-header,
   .container-fluid > .navbar-header,
   .container > .navbar-collapse,
@@ -3889,7 +3889,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   z-index: 1000;
   border-width: 0 0 1px;
 }
-@media (min-width: 333px) {
+@media (min-width: 222px) {
   .navbar-static-top {
     border-radius: 0;
   }
@@ -3901,7 +3901,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   left: 0;
   z-index: 1030;
 }
-@media (min-width: 333px) {
+@media (min-width: 222px) {
   .navbar-fixed-top,
   .navbar-fixed-bottom {
     border-radius: 0;
@@ -3930,7 +3930,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand > img {
   display: block;
 }
-@media (min-width: 333px) {
+@media (min-width: 222px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
     margin-left: -15px;
@@ -3960,7 +3960,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 4px;
 }
-@media (min-width: 333px) {
+@media (min-width: 222px) {
   .navbar-toggle {
     display: none;
   }
@@ -3997,7 +3997,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     background-image: none;
   }
 }*/
-@media (min-width: 333px) {
+@media (min-width: 222px) {
   .navbar-nav {
     float: left;
     margin: 0;

@@ -10,6 +10,7 @@ Template Name: cover page template
 
 <?php while (have_posts()) : the_post(); ?>
 
+<div id="back"></div>
 
 <div class="cover_nav">
 	<div id="page_wrap" class="container home">
@@ -30,11 +31,13 @@ Template Name: cover page template
 					<a href ="http://www.b22.it/web/news">News</a>
 				</div>
 			</div>
+
 			<div class="col-xs-6 col-s-6 col-md-4 col-lg-4">
 				<div class="news_post"> <!-- get news post -->
 					<?php echo do_shortcode("[list-news-items count=1 show_thumbnail=0 show_excerpt=1 show_date=0] "); ?>
 				</div>
 			</div>
+
 			<div class="col-xs-4 col-s-4 col-md-6 col-lg-6">
 				<div class="language"> <!-- get language selector -->
 					<?php do_action('wpml_add_language_selector'); ?>
@@ -504,11 +507,22 @@ Template Name: cover page template
 				echo "
 
 		    $('.container.home .intro .".$term->slug."').hover(function() {
-		        $('body').css('background-image', 'url(".$taxonomy_term_image_arr[url].")');
-		        $('body').css('background-size', 'cover');
-		        $('body').css('background-position', 'center', 'center');
+		        $('body')
+		        	.css('background-image', 'url(".$taxonomy_term_image_arr[url].")')
+		        	.css('background-size', 'cover')
+		        	.css('background-position', 'center', 'center');
+
+		        $('#back')
+					.stop().animate({opacity: 1}, 0)
+					.stop().animate({opacity: 0}, 500);
+
 		    }, function() {
-		        $('body').css('background', '');
+		        $('body').delay( 1000 ).css('background', '');
+
+		        $('#back')
+					.stop().animate({opacity: 0}, 0)
+					.stop().animate({opacity: 1}, 500);
+
 		    });
 				";
 				}

@@ -62,7 +62,7 @@
 
 	<div class="page-header">
 
-	    <div class="container">
+	    <div class="container-fluid">
 	    <div class="col-xs-6">
 	    	<div id="b22_logo">
 		  		<a href="http://www.b22.it/web">

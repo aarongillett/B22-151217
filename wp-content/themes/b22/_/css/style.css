@@ -1156,67 +1156,7 @@ body {
   display: block;
 }
 
-/* Cover Page specific styling */
 
-body.page-id-94, body.page-id-104 {
-  background: #2b2b2b;
-  color: #fafafa !important;
-}
-a.page-id-94, a.page-id-104 {
- color: #fafafa !important;
-}
-a.menu .page-id-94, a.menu .page-id-104 {
- color: #fafafa !important;
-}
-.page-id-94 #navbar li a, .page-id-104 #navbar li a {
-  color: #fafafa; cursor: pointer;
-}
-.page-id-94 #navbar li a:hover, .page-id-104 #navbar li a:hover {
-  color: #ccc;
-}
-.intro {
-  margin-bottom: 40px;
-}
-.intro a {
-  color:#fafafa;
-}
-
-/* Language Selector styling */
-
-#lang_sel_list ul a.lang_sel_other, #lang_sel li ul a:link, #lang_sel_list ul a.lang_sel_other:visited {background-color: transparent !important;}
-
-#lang_sel_list a.lang_sel_sel, #lang_sel_list a.lang_sel_sel:visited {background-color: transparent !important;}
-
-#lang_sel_list ul {border-top: none !important;}
-
-/* Background Covers */
-
-
-
-/* Cover News Items */
-
-.page-id-94 .news-item h3, .page-id-104 .news-item h3 {
-  display: none !important; /* hide News title */
-}
-.page-id-94 .news_post a, .page-id-104 .news_post a  {
-  color: #fafafa !important;
-}
-.page-id-94 .news_post a:hover, .page-id-104 .news_post a:hover  {
-  color: #ccc !important;
-}
-
-/* Media Queries */
-
-@media (max-width: 767px) {
-  .mobile-only { display: block !important; }
-  #tax_cloud { display: none !important; }
-}
-@media (min-width: 768px) {
-  #home-posts {
-    width: 70%;
-    margin: 0 15%;
-  }
-}
 
 
 @-ms-viewport {
